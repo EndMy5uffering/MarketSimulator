@@ -24,18 +24,17 @@ public class User {
     public boolean addToAccount(Account account) {
         if(account == null)
             return false;
-        //TODO: Call function in Account obj to add user
         this.accounts.add(account);
+        account.addUserToAccount(this);
         return true;
     }
 
     public boolean removeFromAccount(Account account) {
         if(account == null)
             return false;
-        //TODO: Call function in Account obj to remove user
         this.accounts.remove(account);
+        account.removeUserFromAccount(this);
         return true;
-
 
     }
 
