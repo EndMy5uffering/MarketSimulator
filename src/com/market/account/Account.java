@@ -33,7 +33,7 @@ public class Account {
 		return null;
 	}
 	
-	public double withdraw() {
+	public double withdraw(double ammount) {
 		return 0.0;
 	}
 	
