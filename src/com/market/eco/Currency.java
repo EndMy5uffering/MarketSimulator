@@ -2,20 +2,21 @@ package com.market.eco;
 
 public class Currency {
 
-	private Currencys currencys;
-	private double ammount = 0.0;
-	
-	public Currency(double ammount, Currencys currency) {
-		this.currencys = currency;
-		this.ammount = ammount;
+	private double worth = 1.0;
+	private String displayName = "Euro";
+
+
+	public Currency(double worth, String displayName) {
+		this.worth = worth;
+		this.displayName = displayName;
 	}
 
-	public Currencys getCurrencys() {
-		return currencys;
+	public double getWorth() {
+		return worth;
 	}
 
-	public double getAmmount() {
-		return ammount;
+	public String getDisplayName() {
+		return displayName;
 	}
 	
 }

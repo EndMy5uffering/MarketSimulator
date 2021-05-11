@@ -29,20 +29,32 @@ public class Account {
 		return users.remove(user);
 	}
 	
-	public Commodity withdrawCommodity() {
+	public Commodity withdrawCommodity(Commodity c) {
+		if(this.commoditiys.remove(c)) {
+			return c;
+		}
 		return null;
 	}
 	
 	public double withdraw(double ammount) {
-		return 0.0;
+		if(ammount < 0)
+			return 0.0;
+		this.balance -= ammount;
+		return ammount;
 	}
 	
 	public boolean deposit(Commodity c) {
-		return false;
+		if(c == null)
+			return false;
+		this.commoditiys.add(c);
+		return true;
 	}
 	
-	public boolean deposit(Currency c) {
-		return false;
+	public boolean deposit(double ammount) {
+		if(ammount < 0)
+			return false;
+		this.balance += ammount;
+		return true;
 	}
 
 	public List<User> getUsers() {

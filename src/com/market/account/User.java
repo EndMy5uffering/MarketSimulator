@@ -15,7 +15,8 @@ public class User {
 
     public boolean deleteUser() {
         boolean temp = true;
-        for(Account a: this.accounts) {
+        List<Account> tempAccounts = new ArrayList<>(this.accounts);
+        for(Account a: tempAccounts) {
             temp = temp && removeFromAccount(a);
         }
         return temp;

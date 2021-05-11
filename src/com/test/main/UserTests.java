@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import com.market.account.Account;
 import com.market.account.User;
-import com.market.eco.Currency;
-import com.market.eco.Currencys;
 
 class UserTests {
 
@@ -48,7 +46,7 @@ class UserTests {
 		assertTrue(user != null, "User was null!");
 		assertTrue(account != null, "Account was null!");
 		
-		assertTrue(account.deposit(new Currency(5, Currencys.TEST_CURRENCY)));
+		assertTrue(account.deposit(5.0));
 		
 		assertTrue(account.getBalance() == 5.0);
 		
