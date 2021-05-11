@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import com.market.account.Account;
 import com.market.account.User;
+import com.market.eco.Commodity;
+import com.market.eco.Currency;
 
 class UserTests {
 
@@ -58,6 +60,35 @@ class UserTests {
 		
 		assertTrue(account.getBalance() == -1.0);
 		
+		assertTrue(account.deposit(-1.0) == false);
+		
+		assertTrue(user.deleteUser());
+		
+		assertTrue(account.getUsers().isEmpty());
+		
+		assertTrue(user.getAccounts().isEmpty());
+	}
+	
+	@Test
+	void accountTests03() {
+
+		Account account = new Account();
+		
+		assertTrue(account.getBalance() == 0);
+		
+		assertTrue(account.withdraw(1.0) == 1.0);
+		
+		assertTrue(account.getBalance() == -1.0);
+		
+		assertTrue(account.withdraw(Integer.MAX_VALUE) == 0);
+		
+		assertTrue(account.deposit(Integer.MAX_VALUE) == true);
+		
+		assertTrue(account.getBalance() == Integer.MAX_VALUE - 1);
+		
+		assertTrue(account.deposit(5) == false);
+		
+		assertTrue(account.getBalance() == Integer.MAX_VALUE - 1);
 	}
 
 }
