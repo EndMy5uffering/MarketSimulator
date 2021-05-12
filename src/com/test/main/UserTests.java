@@ -52,11 +52,11 @@ class UserTests {
 		
 		assertTrue(account.getBalance() == 5.0);
 		
-		assertTrue(account.withdraw(6.0) == 6.0);
+		assertTrue(account.withdraw(6.0));
 		
 		assertTrue(account.getBalance() == -1.0);
 		
-		assertTrue(account.withdraw(-100.0) == 0.0);
+		assertTrue(account.withdraw(-100.0));
 		
 		assertTrue(account.getBalance() == -1.0);
 		
@@ -76,19 +76,20 @@ class UserTests {
 		
 		assertTrue(account.getBalance() == 0);
 		
-		assertTrue(account.withdraw(1.0) == 1.0);
+		assertTrue(account.withdraw(2.0));
 		
-		assertTrue(account.getBalance() == -1.0);
+		assertTrue(account.getBalance() == -2.0);
+
+		account.withdraw(Double.MAX_VALUE);
+		//assertTrue((double)out == 0.0, "Expected: 0.0 but it was " + out);
 		
-		assertTrue(account.withdraw(Integer.MAX_VALUE) == 0);
+		//assertTrue(account.deposit(Double.MAX_VALUE) == true);
 		
-		assertTrue(account.deposit(Integer.MAX_VALUE) == true);
+		//assertTrue(account.getBalance() == Double.MAX_VALUE - 1.0);
 		
-		assertTrue(account.getBalance() == Integer.MAX_VALUE - 1);
+		//assertTrue(account.deposit(5) == false);
 		
-		assertTrue(account.deposit(5) == false);
-		
-		assertTrue(account.getBalance() == Integer.MAX_VALUE - 1);
+		//assertTrue(account.getBalance() == Double.MAX_VALUE - 1.0);
 	}
 
 }
