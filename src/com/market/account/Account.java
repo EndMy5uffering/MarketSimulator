@@ -29,18 +29,20 @@ public class Account {
 		return users.remove(user);
 	}
 	
-	public Commodity withdrawCommodity(Commodity c) {
+	public boolean withdraw(Commodity c) {
 		if(this.commoditiys.remove(c)) {
-			return c;
+			return true;
 		}
-		return null;
+		return false;
 	}
 	
-	public double withdraw(double ammount) {
-		if(ammount < 0)
-			return 0.0;
-		this.balance -= ammount;
-		return ammount;
+	public boolean withdraw(double amount) {
+		if(amount < 0)
+			return false;
+		if(this.balance - amount > this.balance)
+			return false;
+		this.balance -= amount;
+		return true;
 	}
 	
 	public boolean deposit(Commodity c) {
@@ -50,10 +52,12 @@ public class Account {
 		return true;
 	}
 	
-	public boolean deposit(double ammount) {
-		if(ammount < 0)
+	public boolean deposit(double amount) {
+		if(amount < 0)
 			return false;
-		this.balance += ammount;
+		if(this.balance + amount < this.balance)
+			return false;
+		this.balance += amount;
 		return true;
 	}
 
@@ -61,7 +65,7 @@ public class Account {
 		return users;
 	}
 
-	public List<Commodity> getCommoditiys() {
+	public List<Commodity> getCommodities() {
 		return commoditiys;
 	}
 
